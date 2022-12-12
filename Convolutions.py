@@ -53,20 +53,20 @@ show_input_output_image(original_image, blur_image, 'The image of applying Blur 
 sharpen_image = cv2.filter2D(src=original_image, 
                              ddepth=-1, 
                              kernel=sharpen_kernel)
-show_input_output_image(original_image, sharpen_image, 'The image of applying Sharpen kernel')
+# show_input_output_image(original_image, sharpen_image, 'The image of applying Sharpen kernel')
 
 laplacian_image = cv2.filter2D(src=original_image, 
                              ddepth=-1, 
                              kernel=laplacian_kernel)
-show_input_output_image(original_image, laplacian_image, 'The image of applying Laplacian kernel')
+# show_input_output_image(original_image, laplacian_image, 'The image of applying Laplacian kernel')
 
 mean_image = cv2.filter2D(src=original_image, 
                              ddepth=-1, 
                              kernel=mean_kernel)
-show_input_output_image(original_image, mean_image, 'The image of applying Mean kernel')
+# show_input_output_image(original_image, mean_image, 'The image of applying Mean kernel')
 
 gaussian_image = cv2.filter2D(src=original_image, 
                              ddepth=-1, 
                              kernel=gaussian_kernel)
-show_input_output_image(original_image, gaussian_image, 'The image of applying Gaussian kernel')
+# show_input_output_image(original_image, gaussian_image, 'The image of applying Gaussian kernel')
 

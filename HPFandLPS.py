@@ -13,11 +13,11 @@ plt.show()
 # image in frequency domain
 # Implement Fourier Transform to original_image
 F = np.fft.fft2(original_image)
-plt.imshow(np.log1p(np.abs(F)), 
-           cmap='gray')
-plt.title('Image in Frequency domain'), plt.xticks([]), plt.yticks([])
-plt.axis('off')
-plt.show()
+# plt.imshow(np.log1p(np.abs(F)), 
+#            cmap='gray')
+# plt.title('Image in Frequency domain'), plt.xticks([]), plt.yticks([])
+# plt.axis('off')
+# plt.show()
 
 Fshift = np.fft.fftshift(F)
 plt.imshow(np.log1p(np.abs(Fshift)), 
@@ -45,37 +45,38 @@ for u in range(M):
         else:
             H[u,v] = 0
             
-plt.imshow(H, cmap='gray')
-plt.title('Low pass filter'), plt.xticks([]), plt.yticks([])
-plt.axis('off')
-plt.show()
+# plt.imshow(H, cmap='gray')
+# plt.title('Low pass filter'), plt.xticks([]), plt.yticks([])
+# plt.axis('off')
+# plt.show()
 
-# Ideal Low Pass Filtering
-Gshift = Fshift * H
-plt.imshow(np.log1p(np.abs(Gshift)), 
-           cmap='gray')
-plt.title('The spectrum of image after filtering by Low pass filter'), plt.xticks([]), plt.yticks([])
-plt.axis('off')
-plt.show()
+# # Ideal Low Pass Filtering
+# Gshift = Fshift * H
+# plt.imshow(np.log1p(np.abs(Gshift)), 
+#            cmap='gray')
+# plt.title('The spectrum of image after filtering by Low pass filter'), plt.xticks([]), plt.yticks([])
+# plt.axis('off')
+# plt.show()
 
-# Inverse Fourier Transform
-G = np.fft.ifftshift(Gshift)
-plt.imshow(np.log1p(np.abs(G)), 
-           cmap='gray')
-plt.axis('off')
-plt.show()
+# # Inverse Fourier Transform
+# G = np.fft.ifftshift(Gshift)
+# # plt.imshow(np.log1p(np.abs(G)), 
+# #            cmap='gray')
+# # plt.axis('off')
+# # plt.show()
 
-g = np.abs(np.fft.ifft2(G))
-plt.imshow(g, cmap='gray')
-plt.title('The result after using Low pass filter'), plt.xticks([]), plt.yticks([])
-plt.axis('off')
-plt.show()
+# g = np.abs(np.fft.ifft2(G))
+# plt.imshow(g, cmap='gray')
+# plt.title('The result after using Low pass filter'), plt.xticks([]), plt.yticks([])
+# plt.axis('off')
+# plt.show()
 
 
 # Filter: High pass filter
 H = 1 - H
 
 plt.imshow(H, cmap='gray')
+plt.title('High pass filter'), plt.xticks([]), plt.yticks([])
 plt.axis('off')
 plt.show()
 
@@ -83,17 +84,19 @@ plt.show()
 Gshift = Fshift * H
 plt.imshow(np.log1p(np.abs(Gshift)), 
            cmap='gray')
+plt.title('The spectrum of image after filtering by High pass filter'), plt.xticks([]), plt.yticks([])
 plt.axis('off')
 plt.show()
 
 # Inverse Fourier Transform
 G = np.fft.ifftshift(Gshift)
-plt.imshow(np.log1p(np.abs(G)), 
-           cmap='gray')
-plt.axis('off')
-plt.show()
+# plt.imshow(np.log1p(np.abs(G)), 
+#            cmap='gray')
+# plt.axis('off')
+# plt.show()
 
 g = np.abs(np.fft.ifft2(G))
 plt.imshow(g, cmap='gray')
+plt.title('The result after using High pass filter'), plt.xticks([]), plt.yticks([])
 plt.axis('off')
 plt.show()
