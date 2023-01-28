@@ -39,18 +39,18 @@ def apply_filtering(img, kernel):
     return (result_path, output_image)
 
 # apply the covolution
-blur_image = apply_filtering(original_image, blur_kernel) 
+# blur_image = apply_filtering(original_image, blur_kernel) 
 # show_input_output_image(original_image, blur_image, 'The image of applying Blur kernel')
 
-sharpen_image = apply_filtering(original_image, sharpen_kernel) 
+# sharpen_image = apply_filtering(original_image, sharpen_kernel) 
 # show_input_output_image(original_image, sharpen_image, 'The image of applying Sharpen kernel')
 
-laplacian_image = apply_filtering(original_image, laplacian_kernel) 
+# laplacian_image = apply_filtering(original_image, laplacian_kernel) 
 # show_input_output_image(original_image, laplacian_image, 'The image of applying Laplacian kernel')
 
-mean_image = apply_filtering(original_image, mean_kernel) 
+# mean_image = apply_filtering(original_image, mean_kernel) 
 # show_input_output_image(original_image, mean_image, 'The image of applying Mean kernel')
 
-gaussian_image = apply_filtering(original_image, gaussian_kernel) 
+# gaussian_image = apply_filtering(original_image, gaussian_kernel) 
 # show_input_output_image(original_image, gaussian_image, 'The image of applying Gaussian kernel')
 
