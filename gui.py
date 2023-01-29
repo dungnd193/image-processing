@@ -1,61 +1,74 @@
+import os
 import tkinter as tk
 from tkinter import *
-from tkinter.filedialog import askopenfilename, asksaveasfilename
-from PIL import Image, ImageTk
-import os
-from convolutions import *
+from tkinter.filedialog import askopenfilename
 
-def set_image(filepath): 
+from PIL import Image, ImageTk
+
+from Convolutions import *
+
+
+def set_image(filepath):
     if not filepath:
         return
-        
-    img=Image.open(filepath)
-    img.thumbnail((350,350))
-    img=ImageTk.PhotoImage(img)
-    global image 
+
+    img = Image.open(filepath)
+    img.thumbnail((350, 350))
+    img = ImageTk.PhotoImage(img)
+    global image
     image = cv2.imread(filepath, 0)
     lbl.configure(image=img)
-    lbl.image=img
+    lbl.image = img
+
 
 def open_image():
     """Open a file for editing."""
     filepath = askopenfilename(
-        initialdir=os, 
+        initialdir=os,
         title="SelectImage File",
         filetypes=[("JPG Files", "*.jpg"), ("JPEG Files", "*.jpeg"), ("PNG Files", "*.png"), ("All Files", "*.*")]
     )
     set_image(filepath)
 
+
 def hpf():
     try:
-        result_path, sharpen_image = apply_filtering(image, sharpen_kernel)  
+        result_path, sharpen_image = apply_filtering(image, sharpen_kernel)
         # show_input_output_image(image, sharpen_image, 'The image of applying HPF')
         set_image(result_path)
+        print(type(sharpen_image))
     except:
         print("An exception occurred")
+
 
 def lpf():
     try:
-        result_path, blur_image = apply_filtering(image, blur_kernel)  
+        result_path, blur_image = apply_filtering(image, blur_kernel)
         # show_input_output_image(image, blur_image, 'The image of applying HPF')
         set_image(result_path)
+        print(type(blur_image))
     except:
         print("An exception occurred")
 
+
 def gradient_filter():
     try:
-        result_path, laplacian_image = apply_filtering(image, laplacian_kernel)  
+        result_path, laplacian_image = apply_filtering(image, laplacian_kernel)
         # show_input_output_image(image, laplacian_image, 'The image of applying HPF')
         set_image(result_path)
     except:
         print("An exception occurred")
 
+
 def hybrid_filter():
     try:
-        lpf()
-        hpf()
+        _, sharpen_image = apply_filtering(image, sharpen_kernel)
+        _, blur_image = apply_filtering(image, blur_kernel)
+        result_path, result_image = add_image(sharpen_image, blur_image)
+        set_image(result_path)
     except:
         print("An exception occurred")
+
 
 if __name__ == "__main__":
     window = tk.Tk()
